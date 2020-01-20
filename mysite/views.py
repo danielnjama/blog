@@ -23,7 +23,7 @@ def send_email(request):
             send_mail(subject, message, email, ['danielnjama2015@gmail.com'])
         except BadHeaderError:
             return HttpResponse('Invalid header found.')
-        return HttpResponse('Thank you for contacting us. we\'ll get back to you shortly <a hreh="https://hitechcomputers.herokuapp.com/">Go Back Home </a>')
+        return HttpResponse('Thank you for contacting us. we\'ll get back to you shortly <a href="https://hitechcomputers.herokuapp.com/">Go Back Home </a>')
     else:
         
         return HttpResponse('Make sure all fields are entered and valid.')
