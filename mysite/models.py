@@ -26,4 +26,6 @@ class items(models.Model):
     class Meta:
         ordering = ['-datepost']
 
+        
+
 

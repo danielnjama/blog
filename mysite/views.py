@@ -23,12 +23,16 @@ def send_email(request):
             send_mail(subject, message, email, ['danielnjama2015@gmail.com'])
         except BadHeaderError:
             return HttpResponse('Invalid header found.')
-        return HttpResponse('Thank you for contacting us. we\'ll get back to you shortly <a href="https://hitechcomputers.herokuapp.com/">Go Back Home </a>')
+        return HttpResponse('Thank you for contacting us. we\'ll get back to you shortly \n <a href="https://hitechcomputers.herokuapp.com/">Go Back Home </a>')
     else:
         
         return HttpResponse('Make sure all fields are entered and valid.')
 
 def search(request):
     search_results=request.POST.get('choice')
-    products = items.objects.filter(types=search_results)
-    return render(request,'index.html',{'products':products})
+    if search_results == 'none':
+        products = items.objects.all()
+        return render(request,'index.html',{'products':products})
+    else:
+        products = items.objects.filter(types=search_results)
+        return render(request,'index.html',{'products':products})
